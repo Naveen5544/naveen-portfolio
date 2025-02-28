@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <style>
+        /* Gradient background for the entire page */
+        body {
+            background: linear-gradient(135deg, #6a11cb, #296cdf);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+
+        /* Container for the portfolio */
+        .portfolio {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.5s ease;
+        }
+
+        .light-mode .portfolio {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .portfolio:hover {
+            transform: scale(1.05);
+        }
+
+        /* Circular image styling */
+        .portfolio img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .light-mode .portfolio img {
+            border-color: #333;
+        }
+
+        .portfolio img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Name styling */
+        .portfolio h1 {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+
+        /* Bio styling */
+        .portfolio p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        /* Read More button */
+        .portfolio #read-more {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .light-mode .portfolio #read-more {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .portfolio #read-more:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Section styling */
+        .portfolio .section {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .portfolio .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .portfolio .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .portfolio .section ul li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .light-mode .portfolio .section ul li {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio .section ul li:hover {
+            transform: translateX(10px);
+        }
+
+        /* Progress bars for skills */
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            height: 10px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .light-mode .progress-bar {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar div {
+            background: white;
+            height: 100%;
+            border-radius: 5px;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        .light-mode .progress-bar div {
+            background: #333;
+        }
+
+        /* Contact Section */
+        .portfolio .contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .portfolio .contact a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .light-mode .portfolio .contact a {
+            color: #333;
+        }
+
+        .portfolio .contact a:hover {
+            color: #7b2ad2;
+        }
+
+        /* Theme toggle button */
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .light-mode #theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        #theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle">Toggle Light Mode</button>
+
+    <div class="portfolio">
+        <!-- Circular Image -->
+        <img 
+            src="http://localhost:8000/Downloads/IMG_20241012_215919%20%281%29.jpg" 
+            alt="Student Image"
+        >
+
+        <!-- Student Name -->
+        <h1>Pitani Naveen sai</h1>
+
+        <!-- Student Bio -->
+        <p id="bio">
+            Hello! I'm Naveen sai, a passionate web developer with expertise in HTML, CSS, JavaScript, and React. 
+            I love creating beautiful and functional websites that solve real-world problems.
+        </p>
+
+        <!-- Read More Button -->
+        <button id="read-more">Read More</button>
+
+        <!-- Education Section -->
+        <div class="section education">
+            <h2>Education</h2>
+            <ul id="education-list">
+                <!-- Education details will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Hobbies Section -->
+        <div class="section hobbies">
+            <h2>Hobbies</h2>
+            <ul id="hobbies-list">
+                <!-- Hobbies will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Internships Section -->
+        <div class="section internships">
+            <h2>Internships</h2>
+            <ul id="internships-list">
+                <!-- Internships will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section skills">
+            <h2>Skills</h2>
+            <ul id="skills-list">
+                <!-- Skills will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="section achievements">
+            <h2>Achievements</h2>
+            <ul id="achievements-list">
+                <!-- Achievements will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section contact">
+            <h2>Contact Me</h2>
+            <p>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">Email</a> |
+                <a href="https:www.linkedin.com/in/naveen-sai-pitani-170850280" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/Naveen5544" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for dynamic content and interactivity
+
+        // Bio toggle functionality
+        const bio = document.getElementById("bio");
+        const readMoreButton = document.getElementById("read-more");
+        const fullBio = `Hello! I'm Naveen sai, a passionate web developer with expertise in HTML, CSS, JavaScript, and React. 
+            I love creating beautiful and functional websites that solve real-world problems. 
+            I also have experience in UI/UX design and backend development using Node.js. 
+            Let's build something amazing together!`;
+
+        const shortBio = bio.textContent;
+
+        readMoreButton.addEventListener("click", () => {
+            if (bio.textContent === shortBio) {
+                bio.textContent = fullBio;
+                readMoreButton.textContent = "Read Less";
+            } else {
+                bio.textContent = shortBio;
+                readMoreButton.textContent = "Read More";
+            }
+        });
+
+        // Dynamically add education
+        const education = [
+            "Bachelor of Technology - Sasi Institute Of Technology & Engineering, Tadepalligudem, (2022-2026)",
+            "Intermediate - Narayana junior college, tanuku(2020-2022)",
+            "School - A.S.R.Z.P.High school,East vipparru"
+        ];
+        const educationList = document.getElementById("education-list");
+        education.forEach(edu => {
+            const li = document.createElement("li");
+            li.textContent = edu;
+            educationList.appendChild(li);
+        });
+
+        // Dynamically add hobbies
+        const hobbies = ["Learning new technologies", "Reading news papers", "Listening music", "Playing games"];
+        const hobbiesList = document.getElementById("hobbies-list");
+        hobbies.forEach(hobby => {
+            const li = document.createElement("li");
+            li.textContent = hobby;
+            hobbiesList.appendChild(li);
+        });
+
+        // Dynamically add internships
+        const internships = [
+            "Google Android Developer Virtual Internship A.I.C.T.E(January 2024 -March 2024)",
+            "Google AI-ML Virtual Internship A.I.C.T.E(April 2024 - June 2024)"
+        ];
+        const internshipsList = document.getElementById("internships-list");
+        internships.forEach(internship => {
+            const li = document.createElement("li");
+            li.textContent = internship;
+            internshipsList.appendChild(li);
+        });
+
+        // Dynamically add skills with progress bars
+        const skills = [
+            { name: "HTML & CSS", proficiency: 90 },
+            { name: "JavaScript", proficiency: 85 },
+            { name: "React", proficiency: 80 },
+            { name: "Node.js", proficiency: 75 }
+        ];
+        const skillsList = document.getElementById("skills-list");
+        skills.forEach(skill => {
+            const li = document.createElement("li");
+            li.textContent = skill.name;
+            const progressBar = document.createElement("div");
+            progressBar.className = "progress-bar";
+            const progress = document.createElement("div");
+            progressBar.appendChild(progress);
+            li.appendChild(progressBar);
+            skillsList.appendChild(li);
+
+            // Animate progress bar
+            setTimeout(() => {
+                progress.style.width = `${skill.proficiency}%`;
+            }, 100);
+        });
+
+        // Dynamically add achievements with links
+        const achievements = [
+            { name: "Codechef", link: "https://www.codechef.com/users/naveensai14" },
+            { name: "Codeforces", link: "https://codeforces.com/" },
+            { name: "Campus and corporate connect(CCC)", link: "https://student.ccc.training/coding-profile?platform=codechef" }
+        ];
+        const achievementsList = document.getElementById("achievements-list");
+        achievements.forEach(achievement => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = achievement.link;
+            a.textContent = achievement.name;
+            a.target = "_blank"; // Open link in a new tab
+            a.style.color = "inherit"; // Inherit text color
+            a.style.textDecoration = "none"; // Remove underline
+            li.appendChild(a);
+            achievementsList.appendChild(li);
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById("theme-toggle");
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+        });
+    </script>
+</body>
+</html>
